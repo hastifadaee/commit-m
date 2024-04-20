@@ -1,12 +1,12 @@
 import {Box, Grid, RadioGroup, Typography} from "@mui/material";
 import TextInput from "./TextInput";
 import AnswerChoiceInput from "./AnswerChoiceInput";
-import {Control, FieldValues, useController, UseFormGetValues} from "react-hook-form";
+import {Control, FieldValues, useController, useFormContext, UseFormGetValues} from "react-hook-form";
 
-const QuestionInput = ({index, control}: {
+const QuestionInput = ({index}: {
     index: number,
-    control: Control,
 }) => {
+    const {control} = useFormContext()
     const {field: radioField, fieldState: radioFieldState} = useController({
         control: control,
         name: `radio_${index}`,
@@ -24,12 +24,12 @@ const QuestionInput = ({index, control}: {
                         <Typography>سوال {index} :</Typography>
                     </Grid>
                     <Grid item xs={11}>
-                        <TextInput control={control} name={`question_${index}`}/>
+                        <TextInput errorText={'وارد کردن سوال اجباری می باشد'} name={`question_${index}`}/>
                     </Grid>
-                    <AnswerChoiceInput control={control} number={1} name={`answer_${index}_1`}/>
-                    <AnswerChoiceInput control={control} number={2} name={`answer_${index}_2`}/>
-                    <AnswerChoiceInput control={control} number={3} name={`answer_${index}_3`}/>
-                    <AnswerChoiceInput control={control} number={4} name={`answer_${index}_4`}/>
+                    <AnswerChoiceInput number={1} name={`answer_${index}_1`}/>
+                    <AnswerChoiceInput number={2} name={`answer_${index}_2`}/>
+                    <AnswerChoiceInput number={3} name={`answer_${index}_3`}/>
+                    <AnswerChoiceInput number={4} name={`answer_${index}_4`}/>
                 </Grid>
             </RadioGroup>
         </Box>

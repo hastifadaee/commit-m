@@ -7,8 +7,8 @@ const Layout = () => {
             <AppBar sx={{boxShadow:'none' , height:'auto' , px:4}} position={'static'}>
                 <Toolbar>
                     <Box display={'flex'} gap={3}>
-                        <Link to={'/'}><Typography>کوییز جدید</Typography></Link>
-                        <Link to={'/select-quiz'}><Typography>انتخاب کوییز </Typography></Link>
+                        <Link to={'/'}><Typography color={'white'}>کوییز جدید</Typography></Link>
+                        <Link to={'/select-quiz'}><Typography color={'white'}>انتخاب کوییز </Typography></Link>
                     </Box>
                 </Toolbar>
             </AppBar>
