@@ -1,13 +1,12 @@
 import React from 'react';
-import {useRoutes} from "react-router-dom";
+import {RouterProvider} from "react-router-dom";
 import {routes} from "./routes";
 import {Box} from "@mui/material";
 
 function App() {
-    const route = useRoutes(routes)
   return (
     <Box>
-        {route}
+        <RouterProvider router={routes}/>
     </Box>
   );
 }

@@ -1,13 +1,13 @@
 import {Box, Grid, RadioGroup, Typography} from "@mui/material";
 import TextInput from "./TextInput";
 import AnswerChoiceInput from "./AnswerChoiceInput";
-import {Control, FieldValues, useController, useFormContext, UseFormGetValues} from "react-hook-form";
+import {useController, useFormContext} from "react-hook-form";
 
 const QuestionInput = ({index}: {
-    index: number,
+    index: number
 }) => {
     const {control} = useFormContext()
-    const {field: radioField, fieldState: radioFieldState} = useController({
+    const {field: radioField} = useController({
         control: control,
         name: `radio_${index}`,
         rules: {required: true}

@@ -1,19 +1,19 @@
 import {Box, Container, Grid, Typography} from "@mui/material";
-import {Link, useNavigate} from "react-router-dom";
-import {QuizType, QuizzesType} from "../types/commonTypes";
+import {Link} from "react-router-dom";
+import {QuizType} from "../types/commonTypes";
+import {useGetQuizzes} from "../hooks/useGetQuizzes";
 
 
 const SelectQuiz = () => {
-    const quizData = localStorage.getItem('Tests');
-    const quizzes :QuizzesType = quizData ? JSON.parse(quizData) : []
+    const {quizzes} = useGetQuizzes()
     return (
         <>
             {
-                !quizData ? <Box m={'auto'} width={'100%'} height={'400px'} alignItems={'center'} display={'flex'} justifyContent={'center'}><Typography>هیچ کوییزی ثبت نشده است !</Typography></Box>:
+                !quizzes?.length ? <Box m={'auto'} width={'100%'} height={'400px'} alignItems={'center'} display={'flex'} justifyContent={'center'}><Typography>هیچ کوییزی ثبت نشده است !</Typography></Box>:
                     <Container>
                         <Grid container display={'flex'} gap={1} rowGap={2} sx={{justifyContent:'space-between'}}>
                             {
-                                quizzes?.map((quiz,index:number) => {
+                                quizzes?.map((quiz:QuizType,index:number) => {
                                     return (
                                         <Grid item xs={5.5} md={2.5} key={index} sx={{ border: '3px solid #A1BCD7', borderRadius: 2}}>
                                             <Link to={`/test/${quiz.name}`}>

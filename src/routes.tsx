@@ -1,21 +1,17 @@
 import Layout from "./components/layout/Layout";
 import CreateQuiz from "./pages/CreateQuiz";
-import {RouteObject} from "react-router-dom";
+import {createBrowserRouter} from "react-router-dom";
 import SelectQuiz from "./pages/SelectQuiz";
 import Quiz from "./pages/Quiz";
 
-export const routes:RouteObject[] = [
+export const routes = createBrowserRouter([
     {
-        element:<Layout/>,
-        children:[{
-            path :'/',
-            element:<CreateQuiz/>
-        },{
-            path:'/select-quiz',
-            element:<SelectQuiz/>
-        },{
-            path:`test/:name`,
-            element:<Quiz/>
+        element: <Layout/>, children: [{
+            path: '/', element: <CreateQuiz/>
+        }, {
+            path: 'select-quiz', element: <SelectQuiz/>
+        }, {
+            path: `test/:name`, element: <Quiz/>
         }]
     }
-]
+])
